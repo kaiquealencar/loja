@@ -20,9 +20,28 @@
       <tr>
         <td></td>
         <td>Total da compra</td>
-        <td><div>R$ 29,90</div></td>
+        <td><div id="total">R$ 29,90</div></td>
         <td></td>
       </tr>  
     </table>  
   </body>  
+  <script type="text/javascript">
+    var total = document.getElementById("total");
+    var formattedText = floatToMoneyText(moneyTextToFloat(total.innerHTML));
+    alert(total.innerHTML);
+
+    alert(formattedText);
+    alert(formattedText === total.innerHTML);
+
+    function moneyTextToFloat(text){
+      var cleanText = text.replace("R$", "").replace(",", ".");
+      return parseFloat(cleanText)
+    }
+
+    function floatToMoneyText(value){
+      var text = (valeu < 1 ? "0" : "") + Math.floor(value * 100);
+      text = "R$" + text;
+      return text.substr(0, text.length - 2) + "," + text.substr(-2);
+    }
+  </script>
 </html>
